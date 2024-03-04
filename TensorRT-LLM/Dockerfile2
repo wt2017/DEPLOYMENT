@@ -1,0 +1,12 @@
+# Nvidia base image
+FROM localhost/tensorrt-llm-deployed:latest
+
+# Add a layer
+RUN pip install -r examples/llama/requirements.txt
+RUN git config --global --add safe.directory /workspace/TensorRT-LLM
+RUN git lfs update --force
+
+COPY 7b.tar /workspace/TensorRT-LLM/examples/llama/7b.tar
+WORKDIR /workspace/TensorRT-LLM/examples/llama/
+RUN tar xvf 7b.tar
+RUN rm -rf 7b.tar

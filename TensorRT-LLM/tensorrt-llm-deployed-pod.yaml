@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: tensorrt-llm-deployed
+ namespace: default
+spec:
+ hostNetwork: true
+ hostIPC: true
+ containers:
+ - name: tensorrt-llm-deployed
+   image: localhost/tensorrt-llm-deployed:latest
+   imagePullPolicy: Never
+   resources:
+      limits:
+        nvidia.com/gpu: 1
+   command: [ "/bin/bash", "-c", "--" ]       # You need to run some task inside a container to keep it running
+   args: [ "while true; do sleep 10; done;" ]
+ restartPolicy: Never
+ tolerations:
+ - key: "key"
+   operator: "Exists"
+   effect: "NoSchedule"
