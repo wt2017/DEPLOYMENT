@@ -1,0 +1,18 @@
+# Nvidia base image
+FROM docker.io/library/fedora
+
+# Add streamlit
+RUN dnf -y install pip
+RUN pip install streamlit
+
+# Add math app based on streamlit
+RUN mkdir streamlit
+WORKDIR /streamlit
+COPY Visualize-ML.tar .
+RUN tar xvf Visualize-ML.tar
+RUN rm Visualize-ML.tar
+
+# Add python lib of math
+#RUN pip install plotly
+#RUN pip install seaborn
+#RUN pip install scikit-learn

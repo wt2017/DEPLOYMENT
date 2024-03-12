@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: streamlit
+ namespace: default
+spec:
+ hostNetwork: true
+ hostIPC: true
+ containers:
+ - name: streamlit
+   image: localhost/streamlit:002
+   imagePullPolicy: Never
+   command: [ "/bin/bash", "-c", "--" ]       # You need to run some task inside a container to keep it running
+   args: [ "while true; do sleep 10; done;" ]
+ restartPolicy: Never
+ tolerations:
+ - key: "key"
+   operator: "Exists"
+   effect: "NoSchedule"

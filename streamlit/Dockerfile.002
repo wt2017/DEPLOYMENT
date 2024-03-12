@@ -1,0 +1,7 @@
+# Nvidia base image
+FROM localhost/streamlit:v0.0.1
+
+# Add python lib of math
+RUN pip install plotly
+RUN pip install seaborn
+RUN pip install scikit-learn
