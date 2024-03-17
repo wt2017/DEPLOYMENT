@@ -1,9 +1,0 @@
-# Nvidia base image
-FROM localhost/ollama-source-build:v0.0.2
-
-# Add layers
-WORKDIR /wyou
-COPY download-llama2-13b.sh .
-RUN ./download-llama2-13b.sh
-
-
