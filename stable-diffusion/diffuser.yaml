@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: diffuser
+ namespace: default
+spec:
+ hostNetwork: true
+ hostIPC: true
+ containers:
+ - name: diffuser
+   image: localhost/diffuser-pytorch-cuda:v0.0.1
+   imagePullPolicy: Never
+   resources:
+      limits:
+        nvidia.com/gpu: 1
+   command: [ "/bin/bash", "-c", "--" ]       # You need to run some task inside a container to keep it running
+   args: [ "while true; do sleep 10; done;" ]
+   volumeMounts:
+   - name: diffuser-storage
+     mountPath: /root/.diffuser
+ volumes:
+ - name: diffuser-storage
+   persistentVolumeClaim:
+     claimName: pvc-volume2-size128
+ restartPolicy: Never
+ tolerations:
+ - key: "key"
+   operator: "Exists"
+   effect: "NoSchedule"

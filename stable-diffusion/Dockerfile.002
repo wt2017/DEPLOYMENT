@@ -1,0 +1,7 @@
+FROM localhost/diffuser-pytorch-cuda:v0.0.1
+
+RUN apt-get update
+RUN apt-get install vim
+
+
+CMD ["/bin/bash"]

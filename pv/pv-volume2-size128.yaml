@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-volume2-size128
+  labels:
+    type: local
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 128Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/home/wyou/pv/volume2-size128"
