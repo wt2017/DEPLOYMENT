@@ -1,0 +1,25 @@
+FROM localhost/pytorch-cuda-base:v0.0.1
+LABEL maintainer="Hugging Face"
+LABEL repository="diffusers"
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV UV_HTTP_TIMEOUT=7200
+
+# make sure to use venv
+RUN python3 -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+RUN python3 -m uv pip install --no-cache-dir     invisible_watermark
+RUN python3 -m uv pip install --no-cache-dir     accelerate
+RUN python3 -m uv pip install --no-cache-dir     datasets
+RUN python3 -m uv pip install --no-cache-dir     hf-doc-builder
+RUN python3 -m uv pip install --no-cache-dir     huggingface-hub
+RUN python3 -m uv pip install --no-cache-dir     Jinja2
+RUN python3 -m uv pip install --no-cache-dir     librosa
+RUN python3 -m uv pip install --no-cache-dir     numpy
+RUN python3 -m uv pip install --no-cache-dir     scipy
+RUN python3 -m uv pip install --no-cache-dir     tensorboard
+RUN python3 -m uv pip install --no-cache-dir     transformers
+RUN python3 -m uv pip install --no-cache-dir     pytorch-lightning
+
+CMD ["/bin/bash"]
