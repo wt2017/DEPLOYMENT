@@ -1,7 +1,12 @@
 FROM localhost/diffuser-pytorch-cuda:v0.0.1
 
 RUN apt-get update
-RUN apt-get install vim
-
+RUN apt-get install vim -y
+WORKDIR /home
+COPY diffusers.tar .
+RUN tar xvf diffusers.tar
+WORKDIR /home/diffusers
+RUN chmod +x setup.py
+RUN pip install -e ".[torch]"
 
 CMD ["/bin/bash"]
