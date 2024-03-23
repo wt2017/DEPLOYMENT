@@ -1,7 +1,6 @@
 FROM localhost/diffuser-pytorch-cuda:v0.0.2
 
 WORKDIR /home
-RUN rm -rf diffusers.tar
 RUN curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash
 RUN apt-get install git-lfs
 RUN git lfs install
@@ -9,5 +8,6 @@ RUN git config --global http.proxy socks5 127.0.0.1:7890
 RUN git config --global https.proxy socks5 127.0.0.1:7890
 RUN git config --global https.proxy 127.0.0.1:7890 --add
 RUN git config --global http.proxy 127.0.0.1:7890 --add
+COPY gen.py .
 
 CMD ["/bin/bash"]

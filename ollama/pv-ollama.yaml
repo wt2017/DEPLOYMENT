@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: pv-volume1-size128
+  name: pv-ollama
   labels:
     type: local
 spec:
@@ -11,4 +11,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/home/wyou/pv/volume1-size128"
+    path: "/run/media/wyou/data/pvs/pv-ollama"

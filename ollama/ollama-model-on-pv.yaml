@@ -21,7 +21,7 @@ spec:
  volumes:
  - name: ollama-storage
    persistentVolumeClaim:
-     claimName: pvc-volume1-size128
+     claimName: pvc-ollama
  restartPolicy: Never
  tolerations:
  - key: "key"

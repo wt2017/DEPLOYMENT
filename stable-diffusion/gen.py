@@ -8,7 +8,7 @@ import torch
 def generate(filename, text):
 
     pipeline = AutoPipelineForText2Image.from_pretrained(
-	"/home/stable-diffusion-v1-5", torch_dtype=torch.float16, variant="fp16"
+	"/home/stable-diffusion-storage/stable-diffusion-v1-5", torch_dtype=torch.float16, variant="fp16"
     ).to("cuda")
 
     image = pipeline(text).images[0]
