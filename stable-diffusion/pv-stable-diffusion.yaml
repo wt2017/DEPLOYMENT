@@ -11,4 +11,4 @@ spec:
   accessModes:
     - ReadWriteOnce
   hostPath:
-    path: "/run/media/wyou/data/pvs/pv-stable-diffusion"
+    path: "/home/wyou/data/partition1/pvs/pv-stable-diffusion"
