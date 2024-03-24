@@ -8,7 +8,7 @@ spec:
  hostIPC: true
  containers:
  - name: stable-diffusion
-   image: localhost/diffuser-pytorch-cuda:v0.0.3
+   image: localhost/diffuser-pytorch-cuda:v0.0.4
    imagePullPolicy: Never
    resources:
       limits:
