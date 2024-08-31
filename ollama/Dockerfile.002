@@ -1,8 +1,0 @@
-# Nvidia base image
-FROM localhost/ollama-source-build:v0.0.1
-
-# Add layers
-RUN apt-get install vim -y
-COPY gpu_info_cuda.c ./gpu/gpu_info_cuda.c
-RUN export PATH=$PATH:/usr/local/go/bin && go env -w GOPROXY=https://goproxy.cn
-RUN export PATH=$PATH:/usr/local/go/bin && go build .
