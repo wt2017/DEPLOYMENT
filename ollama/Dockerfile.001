@@ -1,0 +1,16 @@
+# Nvidia base image
+FROM docker.io/ollama/ollama:latest
+
+# Add layers
+RUN apt-get update
+RUN apt-get install git -y
+RUN apt-get install build-essential fakeroot dpkg-dev -y
+RUN apt-get install libcurl4-openssl-dev -y
+RUN apt-get install cmake -y
+RUN mkdir wyou
+WORKDIR /wyou
+RUN git clone https://github.com/ollama/ollama.git
+COPY go1.22.1.linux-amd64.tar.gz .
+RUN tar -C /usr/local -xzf go1.22.1.linux-amd64.tar.gz
+WORKDIR /wyou/ollama
+RUN export PATH=$PATH:/usr/local/go/bin && go generate ./...
