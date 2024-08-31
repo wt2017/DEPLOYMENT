@@ -1,0 +1,52 @@
+# Docker Image for Comfy3D
+
+image:https://github.com/YanWenKun/ComfyUI-Docker/actions/workflows/build-comfy3d-pt23.yml/badge.svg["GitHub Workflow Status",link="https://github.com/YanWenKun/ComfyUI-Docker/actions/workflows/build-comfy3d-pt23.yml"]
+
+https://hub.docker.com/repository/docker/yanwk/comfyui-boot/tags?name=comfy3d-pt23[View on <Docker Hub>]
+
+
+* By default, install only ComfyUI, ComfyUI-Manager, ComfyUI-3D-Pack
+
+* Comfy3D version:
+** https://github.com/MrForExample/ComfyUI-3D-Pack/tree/8c4d127528a9215d23262df722facf519ed80f56[30bc061]
+(Jul 24, 2024)
+
+* Dev kits:
+** CUDA dev kit (12.1)
+** Python dev package (3.11)
+** GCC C++ (11)
+
+* Key Components:
+** torch==2.3.0+cu121
+** xformers==0.0.26.post1
+
+## Usage
+
+.Run with Docker
+[source,sh]
+----
+mkdir -p storage
+
+docker run -it --rm \
+  --name comfy3d-pt23 \
+  --gpus all \
+  -p 8188:8188 \
+  -v "$(pwd)"/storage:/root \
+  -e CLI_ARGS="" \
+  yanwk/comfyui-boot:comfy3d-pt23
+----
+
+.Run with Podman
+[source,sh]
+----
+mkdir -p storage
+
+podman run -it --rm \
+  --name comfy3d-pt23 \
+  --device nvidia.com/gpu=all \
+  --security-opt label=disable \
+  -p 8188:8188 \
+  -v "$(pwd)"/storage:/root \
+  -e CLI_ARGS="" \
+  docker.io/yanwk/comfyui-boot:comfy3d-pt23
+----
