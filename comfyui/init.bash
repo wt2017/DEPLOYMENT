@@ -125,6 +125,8 @@ echo "== Installing/Updating from ComfyUI's requirements"
 pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org -r requirements.txt || error_exit "ComfyUI requirements install/upgrade failed"
 echo "== Installing Huggingface Hub"
 pip3 install --trusted-host pypi.org --trusted-host files.pythonhosted.org -U "huggingface_hub[cli]" || error_exit "HuggingFace Hub CLI install/upgrade failed"
+echo "== Installing GitPython"
+pip3 install GitPython
 
 export COMFYUI_PATH=`pwd`
 echo "-- COMFYUI_PATH: ${COMFYUI_PATH}"
