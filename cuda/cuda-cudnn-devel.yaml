@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: cuda-cudnn-devel
+ namespace: default
+spec:
+ hostNetwork: true
+ hostIPC: true
+ containers:
+ - name: cuda-cudnn-devel
+   image: localhost/cuda-cudnn:12.4.0-devel-ubi8
+   imagePullPolicy: Never
+   command: [ "/bin/bash", "-c", "--" ]       # You need to run some task inside a container to keep it running
+   args: [ "while true; do sleep 10; done;" ]
+ restartPolicy: Never
+ tolerations:
+ - key: "key"
+   operator: "Exists"
+   effect: "NoSchedule"

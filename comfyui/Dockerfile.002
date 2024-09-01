@@ -1,0 +1,9 @@
+ARG DOCKER_FROM=localhost/comfyui:0.0.1
+#ARG DOCKER_FROM=nvidia/cuda:12.3.2-runtime-ubuntu22.04
+
+FROM ${DOCKER_FROM}
+
+COPY --chown=comfy:comfy --chmod=555 init.bash comfyui-nvidia_init.bash
+
+#CMD [ "./comfyui-nvidia_init.bash" ]
+RUN ./comfyui-nvidia_init.bash
