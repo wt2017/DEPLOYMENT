@@ -1,2 +1,7 @@
 Dockerfile.xxx is for podman
 Dockerfile is for docker
+
+run comfyui successfully by steps:
+1) docker run -it --network=host --gpus=all comfyui:0.0.2
+2) ./start.bash
+3) 127.0.0.1:8188 from Chrome
